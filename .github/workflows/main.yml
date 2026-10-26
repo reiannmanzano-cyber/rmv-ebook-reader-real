@@ -30,12 +30,13 @@ jobs:
         run: |
           chmod +x ./gradlew
           ./gradlew assembleDebug
+          echo "Searching for APK..."
+          find . -type f -name "*.apk"
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: RMV-Ebook-Reader-Lavender-APK
-          path: '**/build/outputs/apk/debug/*.apk'
+          path: app/build/outputs/apk/debug/*.apk
           if-no-files-found: error
           retention-days: 7
-          
